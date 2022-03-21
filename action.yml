@@ -1,0 +1,30 @@
+name: "Manage function-app slot"
+description: "Create/Update/Delete a slot for a given webapp on Azure"
+author: "wirszt_j"
+inputs:
+  slotName:
+    required: true
+    description: The name of the slot
+  configCloneSlotName:
+    required: false
+    description: Clone existing slot configuration
+    default: default slot
+  subscriptionID:
+    required: true
+    description: ID of the azure subscription
+  ressourceGroup:
+    required: true
+    description: Ressource groupe where the app is hosted
+  appName:
+    required: true
+    description: Name of the web app where the slot will be created
+  appLocation:
+    required: true
+    description: Region where the app is deployed to
+  rawAppSettings:
+    required: false
+    description: JSON representing the settings that needs to added
+
+runs:
+  using: "node12"
+  main: "dist/index.js"
