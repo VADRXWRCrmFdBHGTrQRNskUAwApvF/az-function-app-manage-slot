@@ -150,7 +150,7 @@ function run({ injectedCore, } = {}) {
             const getParams = new getParams_1.GetParams({ core: injectedCore || core });
             const { slotName: candidateSlotName, configCloneSlotName, subscriptionID, ressourceGroup, appName, appLocation, appSettings, action, } = yield getParams.run();
             const credentials = yield authenticate();
-            const slotName = (0, change_case_1.paramCase)(candidateSlotName);
+            const slotName = (0, change_case_1.paramCase)(candidateSlotName.split("/").pop()).substring(0, 25);
             const client = new arm_appservice_1.WebSiteManagementClient(credentials, subscriptionID);
             core.info("Authenticated with azure");
             if (action === "delete") {
