@@ -49,7 +49,10 @@ export async function run({
 
     const credentials = await authenticate();
 
-    const slotName = paramCase(candidateSlotName);
+    const slotName = paramCase(candidateSlotName.split("/").pop()!).substring(
+      0,
+      25
+    );
 
     const client = new WebSiteManagementClient(credentials, subscriptionID);
 
